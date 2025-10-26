@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const app = express();
 app.set('trust proxy', 1);
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
 // Middleware
@@ -3271,6 +3271,12 @@ app.post('/api/admin/video-analytics/data-retention/custom-delete', authenticate
       });
     });
   });
+});
+// ✅ Serve React build files when deployed on Render
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.listen(PORT, () => {
