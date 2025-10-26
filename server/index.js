@@ -191,18 +191,21 @@ db.serialize(() => {
   });
 
   // Exam Results table
-  db.run(`CREATE TABLE IF NOT EXISTS exam_results (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    student_id INTEGER,
-    subject_id INTEGER,
-    total_questions INTEGER,
-    correct_answers INTEGER,
-    score REAL,
-    answers TEXT, -- JSON string of answers
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (student_id) REFERENCES students (id),
-    FOREIGN KEY (subject_id) REFERENCES subjects (id)
-  )`);
+db.run(`CREATE TABLE IF NOT EXISTS exam_results (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  exam_id INTEGER, -- ✅ add this line
+  student_id INTEGER,
+  subject_id INTEGER,
+  total_questions INTEGER,
+  correct_answers INTEGER,
+  score REAL,
+  answers TEXT, -- JSON string of answers
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (exam_id) REFERENCES exams (id),
+  FOREIGN KEY (student_id) REFERENCES students (id),
+  FOREIGN KEY (subject_id) REFERENCES subjects (id)
+)`);
+
 
   // Exam Questions table - junction table for exam-question relationship
   db.run(`CREATE TABLE IF NOT EXISTS exam_questions (
