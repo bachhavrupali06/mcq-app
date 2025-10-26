@@ -4,17 +4,21 @@
   "description": "MCQ Exam Application with Admin Panel and Student Interface",
   "main": "server/index.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && npm run dev",
     "client": "cd client && npm start",
-    "build": "cd client && npm run build",
-    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+    "build": "cd client && npm install && npm run build && cd .. && (mkdir server\\public 2>nul || robocopy client\\build server\\public /E >nul)",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "postinstall": "cd server && npm install && cd ../client && npm install"
   },
   "keywords": ["mcq", "exam", "education", "react", "nodejs"],
   "author": "MCQ App Developer",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^7.6.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

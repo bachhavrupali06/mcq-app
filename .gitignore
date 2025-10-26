@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Production build
+client/build/
+server/public/
+
+# Environment variables
+.env
+server/.env
+
+# Logs
+*.log
+
+# IDE files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Database files (we'll keep the main ones but ignore temp files)
+*.db-journal
+*.db-shm
+*.db-wal
