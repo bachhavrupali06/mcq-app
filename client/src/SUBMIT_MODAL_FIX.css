@@ -1,0 +1,471 @@
+/* ================================================================
+   SUBMIT EXAM MODAL - RESPONSIVE FIX
+   Fixes: Modal visibility, scrolling, and proper display
+   ================================================================ */
+
+/* ================================================================
+   1. MODAL OVERLAY - ENSURE PROPER DISPLAY
+   ================================================================ */
+
+.modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(0, 0, 0, 0.75) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  padding: 1rem !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* ================================================================
+   2. MODAL CONTAINER - CENTER AND SIZE PROPERLY
+   ================================================================ */
+
+.modal-overlay .modal {
+  position: relative !important;
+  background: var(--card-bg, #ffffff) !important;
+  border-radius: var(--border-radius, 12px) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3) !important;
+  max-width: 600px !important;
+  width: 100% !important;
+  max-height: 90vh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: auto !important;
+  animation: modalSlideIn 0.3s ease-out !important;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================================================
+   3. MODAL HEADER - PROPER STYLING
+   ================================================================ */
+
+.modal-overlay .modal .modal-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 1.5rem !important;
+  border-bottom: 2px solid var(--border-color, #e5e7eb) !important;
+  background: var(--card-bg, #ffffff) !important;
+  flex-shrink: 0 !important;
+}
+
+.modal-overlay .modal .modal-title {
+  margin: 0 !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: var(--text-primary, #1f2937) !important;
+}
+
+.modal-overlay .modal .close-btn {
+  background: transparent !important;
+  border: none !important;
+  font-size: 2rem !important;
+  line-height: 1 !important;
+  color: var(--text-secondary, #6b7280) !important;
+  cursor: pointer !important;
+  padding: 0.25rem !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+}
+
+.modal-overlay .modal .close-btn:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+  color: var(--text-primary, #1f2937) !important;
+}
+
+/* ================================================================
+   4. MODAL BODY - SCROLLABLE CONTENT
+   ================================================================ */
+
+.modal-overlay .modal .modal-body {
+  padding: 1.5rem !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  flex: 1 !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Custom scrollbar for modal body */
+.modal-overlay .modal .modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-overlay .modal .modal-body::-webkit-scrollbar-track {
+  background: var(--bg-secondary, #f3f4f6);
+  border-radius: 3px;
+}
+
+.modal-overlay .modal .modal-body::-webkit-scrollbar-thumb {
+  background: var(--primary-color, #667eea);
+  border-radius: 3px;
+}
+
+.modal-overlay .modal .modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color, #764ba2);
+}
+
+/* ================================================================
+   5. MODAL CONTENT - STATISTICS GRID
+   ================================================================ */
+
+.modal-overlay .modal .modal-body > div[style*="grid"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1rem !important;
+}
+
+.modal-overlay .modal .modal-body > div[style*="grid"] > div {
+  text-align: center !important;
+  padding: 1rem !important;
+}
+
+/* ================================================================
+   6. MODAL BUTTONS - PROPER LAYOUT
+   ================================================================ */
+
+.modal-overlay .modal .modal-body > div:last-child {
+  display: flex !important;
+  gap: 0.75rem !important;
+  justify-content: flex-end !important;
+  margin-top: 1rem !important;
+}
+
+.modal-overlay .modal .modal-body .btn {
+  min-height: 44px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  border-radius: var(--border-radius, 8px) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+/* ================================================================
+   7. MOBILE RESPONSIVE - CRITICAL FIXES
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0.75rem !important;
+    align-items: flex-start !important;
+    padding-top: 2rem !important;
+  }
+
+  .modal-overlay .modal {
+    max-width: 100% !important;
+    width: calc(100% - 1.5rem) !important;
+    max-height: calc(100vh - 4rem) !important;
+    margin: 0 auto !important;
+  }
+
+  .modal-overlay .modal .modal-header {
+    padding: 1.25rem !important;
+  }
+
+  .modal-overlay .modal .modal-title {
+    font-size: 1.25rem !important;
+  }
+
+  .modal-overlay .modal .close-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.75rem !important;
+  }
+
+  .modal-overlay .modal .modal-body {
+    padding: 1.25rem !important;
+  }
+
+  .modal-overlay .modal .modal-body > p {
+    font-size: 1rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  /* Statistics Grid - Stack on mobile */
+  .modal-overlay .modal .modal-body > div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    padding: 1.25rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .modal-overlay .modal .modal-body > div[style*="grid"] > div {
+    padding: 0.85rem !important;
+  }
+
+  .modal-overlay .modal .modal-body > div[style*="grid"] > div > div:first-child {
+    font-size: 1.75rem !important;
+  }
+
+  .modal-overlay .modal .modal-body > div[style*="grid"] > div > div:last-child {
+    font-size: 0.85rem !important;
+  }
+
+  /* Warning Alert - More compact */
+  .modal-overlay .modal .modal-body .alert {
+    padding: 0.85rem 1rem !important;
+    margin-bottom: 1.25rem !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 0.5rem !important;
+  }
+
+  .modal-overlay .modal .modal-body .alert > div > div:first-child {
+    font-size: 0.9rem !important;
+  }
+
+  .modal-overlay .modal .modal-body .alert > div > div:last-child {
+    font-size: 0.85rem !important;
+  }
+
+  /* Buttons - Stack on mobile */
+  .modal-overlay .modal .modal-body > div:last-child {
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+  }
+
+  .modal-overlay .modal .modal-body .btn {
+    width: 100% !important;
+    min-width: auto !important;
+    padding: 0.85rem 1.25rem !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ================================================================
+   8. SMALL MOBILE (480px and below)
+   ================================================================ */
+
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 0.5rem !important;
+    padding-top: 1.5rem !important;
+  }
+
+  .modal-overlay .modal {
+    width: calc(100% - 1rem) !important;
+    max-height: calc(100vh - 3rem) !important;
+  }
+
+  .modal-overlay .modal .modal-header {
+    padding: 1rem !important;
+  }
+
+  .modal-overlay .modal .modal-title {
+    font-size: 1.1rem !important;
+  }
+
+  .modal-overlay .modal .modal-body {
+    padding: 1rem !important;
+  }
+
+  .modal-overlay .modal .modal-body > p {
+    font-size: 0.95rem !important;
+  }
+
+  .modal-overlay .modal .modal-body > div[style*="grid"] {
+    padding: 1rem !important;
+  }
+
+  .modal-overlay .modal .modal-body > div[style*="grid"] > div {
+    padding: 0.75rem !important;
+  }
+
+  .modal-overlay .modal .modal-body > div[style*="grid"] > div > div:first-child {
+    font-size: 1.5rem !important;
+  }
+
+  .modal-overlay .modal .modal-body .btn {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ================================================================
+   9. TABLET LANDSCAPE
+   ================================================================ */
+
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
+  .modal-overlay {
+    padding-top: 1rem !important;
+  }
+
+  .modal-overlay .modal {
+    max-height: calc(100vh - 2rem) !important;
+  }
+
+  /* Keep grid in 3 columns on landscape tablet */
+  .modal-overlay .modal .modal-body > div[style*="grid"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* ================================================================
+   10. DARK MODE SUPPORT
+   ================================================================ */
+
+[data-theme="dark"] .modal-overlay .modal {
+  background: var(--card-bg, #1f2937) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7) !important;
+}
+
+[data-theme="dark"] .modal-overlay .modal .modal-header {
+  background: var(--card-bg, #1f2937) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .modal-overlay .modal .modal-title {
+  color: var(--text-primary, #f9fafb) !important;
+}
+
+[data-theme="dark"] .modal-overlay .modal .close-btn {
+  color: var(--text-secondary, #9ca3af) !important;
+}
+
+[data-theme="dark"] .modal-overlay .modal .close-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--text-primary, #f9fafb) !important;
+}
+
+[data-theme="dark"] .modal-overlay .modal .modal-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ================================================================
+   11. PREVENT BODY SCROLL WHEN MODAL IS OPEN
+   ================================================================ */
+
+body:has(.modal-overlay) {
+  overflow: hidden !important;
+}
+
+/* ================================================================
+   12. BACKDROP BLUR (MODERN BROWSERS)
+   ================================================================ */
+
+@supports (backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px)) {
+  .modal-overlay {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    background: rgba(0, 0, 0, 0.65) !important;
+  }
+}
+
+/* ================================================================
+   13. FOCUS TRAP AND ACCESSIBILITY
+   ================================================================ */
+
+.modal-overlay .modal:focus {
+  outline: none !important;
+}
+
+.modal-overlay .modal .btn:focus {
+  outline: 2px solid var(--primary-color, #667eea) !important;
+  outline-offset: 2px !important;
+}
+
+.modal-overlay .modal .close-btn:focus {
+  outline: 2px solid var(--primary-color, #667eea) !important;
+  outline-offset: 2px !important;
+}
+
+/* ================================================================
+   14. HIGH CONTRAST MODE SUPPORT
+   ================================================================ */
+
+@media (prefers-contrast: high) {
+  .modal-overlay .modal {
+    border: 2px solid var(--text-primary, #000) !important;
+  }
+
+  .modal-overlay .modal .modal-header {
+    border-bottom: 3px solid var(--text-primary, #000) !important;
+  }
+}
+
+/* ================================================================
+   15. REDUCED MOTION SUPPORT
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay .modal {
+    animation: none !important;
+  }
+
+  .modal-overlay,
+  .modal-overlay .modal,
+  .modal-overlay .modal * {
+    transition: none !important;
+  }
+}
+
+/* ================================================================
+   16. SAFE AREA FOR NOTCHED DEVICES
+   ================================================================ */
+
+@supports (padding: max(0px)) {
+  @media (max-width: 768px) {
+    .modal-overlay {
+      padding-left: max(0.75rem, env(safe-area-inset-left)) !important;
+      padding-right: max(0.75rem, env(safe-area-inset-right)) !important;
+      padding-bottom: max(0.75rem, env(safe-area-inset-bottom)) !important;
+    }
+  }
+}
+
+/* ================================================================
+   17. PREVENT TEXT SELECTION ON TOUCH
+   ================================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  .modal-overlay .modal .modal-header {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .modal-overlay .modal .close-btn {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ================================================================
+   18. ENSURE MODAL IS ABOVE EVERYTHING
+   ================================================================ */
+
+.modal-overlay {
+  z-index: 9999 !important;
+}
+
+/* Ensure sidebar and navbar are below modal */
+.sidebar,
+.navbar,
+.question-navigator {
+  z-index: 99 !important;
+}
+
+/* ================================================================
+   END OF SUBMIT MODAL FIX
+   ================================================================ */

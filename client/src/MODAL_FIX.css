@@ -1,0 +1,187 @@
+/* ================================================================
+   MODAL PORTAL FIX - CRITICAL CENTERING UPDATES
+   This fixes modals appearing at the bottom instead of centered
+   ================================================================ */
+
+/* IMPORTANT: Force fixed positioning and centering with !important */
+.modal-portal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  z-index: 9999 !important;
+  
+  /* CRITICAL: Flexbox centering */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  
+  padding: 1rem !important;
+  overflow-y: auto !important;
+  animation: modalOverlayFadeIn 0.2s ease-out;
+  
+  /* Ensure it's positioned relative to viewport, not parent */
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* Modal Content - Force centering */
+.modal-portal-content {
+  position: relative !important;
+  background: var(--card-bg-light, #ffffff) !important;
+  border-radius: 16px !important;
+  width: 100% !important;
+  max-height: calc(100vh - 2rem) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid var(--border-light, #e2e8f0) !important;
+  animation: modalContentSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10000 !important;
+  
+  /* Ensure modal doesn't get pushed */
+  margin: auto !important;
+  flex-shrink: 0 !important;
+}
+
+/* Dark theme support */
+[data-theme="dark"] .modal-portal-content {
+  background: var(--card-bg-light, #1e293b) !important;
+  border-color: var(--border-light, #334155) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Size constraints with !important */
+.modal-portal-sm {
+  max-width: 400px !important;
+}
+
+.modal-portal-md {
+  max-width: 600px !important;
+}
+
+.modal-portal-lg {
+  max-width: 800px !important;
+}
+
+.modal-portal-xl {
+  max-width: 1200px !important;
+}
+
+/* Override any conflicting styles from parent containers */
+.modal-portal-overlay * {
+  box-sizing: border-box;
+}
+
+/* Ensure modal renders above everything */
+body > .modal-portal-overlay {
+  position: fixed !important;
+}
+
+/* Fix for when modal is inside other elements (should not happen with portal, but just in case) */
+.dashboard-with-sidebar .modal-portal-overlay,
+.dashboard-main .modal-portal-overlay,
+.card .modal-portal-overlay,
+.card-body .modal-portal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+/* Prevent any transforms or positioning from affecting the modal */
+.modal-portal-overlay,
+.modal-portal-content {
+  transform: none !important;
+}
+
+/* Ensure overlay covers the entire viewport */
+@media screen and (max-width: 768px) {
+  .modal-portal-overlay {
+    padding: 0.5rem !important;
+  }
+  
+  .modal-portal-content {
+    max-height: calc(100vh - 1rem) !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .modal-portal-overlay {
+    padding: 0 !important;
+  }
+  
+  .modal-portal-content {
+    border-radius: 0 !important;
+    max-height: 100vh !important;
+  }
+}
+
+/* Fix: Ensure modal stays centered even with scroll */
+.modal-portal-overlay {
+  overscroll-behavior: contain;
+}
+
+/* Fix: Prevent modal from being affected by parent positioning */
+.modal-portal-overlay {
+  position: fixed !important;
+  inset: 0 !important; /* Modern way to set top, right, bottom, left to 0 */
+}
+
+/* Additional fix for centering */
+.modal-portal-overlay::before {
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+}
+
+/* Ensure body is the positioning context */
+body {
+  position: relative;
+}
+
+/* Lock body scroll when modal is open */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Critical: Override any inherited positioning */
+.modal-portal-content {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+}
+
+/* Fallback: If flexbox fails, use absolute centering */
+@supports not (display: flex) {
+  .modal-portal-content {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+/* Debug: Add this temporarily to see if modal is rendering */
+/* .modal-portal-overlay {
+  background: rgba(255, 0, 0, 0.5) !important; 
+  border: 5px solid red !important;
+}
+
+.modal-portal-content {
+  border: 5px solid blue !important;
+} */

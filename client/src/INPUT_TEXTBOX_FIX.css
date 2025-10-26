@@ -1,0 +1,446 @@
+/* ================================================================
+   INPUT & TEXTAREA FIX FOR DARK MODE
+   Ensures all text boxes are visible in both light and dark modes
+   ================================================================ */
+
+/* ================================================================
+   1. BASE INPUT/TEXTAREA STYLING (All Types)
+   ================================================================ */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="url"],
+input[type="tel"],
+input[type="search"],
+textarea,
+.form-control {
+  width: 100%;
+  padding: 0.625rem 0.875rem !important;
+  border: 1.5px solid var(--border-light) !important;
+  border-radius: var(--border-radius-sm) !important;
+  font-size: var(--text-sm) !important;
+  transition: all var(--transition-fast) !important;
+  background: var(--card-bg-light) !important;
+  color: var(--text-primary) !important;
+  line-height: 1.5 !important;
+  font-family: inherit !important;
+}
+
+/* ================================================================
+   2. DARK MODE INPUT/TEXTAREA STYLING
+   ================================================================ */
+
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="email"],
+[data-theme="dark"] input[type="password"],
+[data-theme="dark"] input[type="number"],
+[data-theme="dark"] input[type="date"],
+[data-theme="dark"] input[type="time"],
+[data-theme="dark"] input[type="url"],
+[data-theme="dark"] input[type="tel"],
+[data-theme="dark"] input[type="search"],
+[data-theme="dark"] textarea,
+[data-theme="dark"] .form-control {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+
+/* ================================================================
+   3. PLACEHOLDER STYLING
+   ================================================================ */
+
+/* Light mode placeholders */
+input::placeholder,
+textarea::placeholder,
+.form-control::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+/* Dark mode placeholders */
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder,
+[data-theme="dark"] .form-control::placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+/* ================================================================
+   4. FOCUS STATES
+   ================================================================ */
+
+input:focus,
+textarea:focus,
+.form-control:focus {
+  outline: none !important;
+  border-color: var(--btn-primary-bg, #667eea) !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+  background: var(--card-bg-light) !important;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] .form-control:focus {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2) !important;
+}
+
+/* ================================================================
+   5. TEXTAREA SPECIFIC
+   ================================================================ */
+
+textarea {
+  resize: vertical !important;
+  min-height: 100px !important;
+  font-family: inherit !important;
+}
+
+[data-theme="dark"] textarea {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+
+/* ================================================================
+   6. MODAL INPUT/TEXTAREA OVERRIDES
+   ================================================================ */
+
+.modal input[type="text"],
+.modal input[type="email"],
+.modal input[type="password"],
+.modal input[type="number"],
+.modal input[type="date"],
+.modal input[type="time"],
+.modal input[type="url"],
+.modal input[type="tel"],
+.modal textarea,
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"],
+.modal-content input[type="number"],
+.modal-content input[type="date"],
+.modal-content input[type="time"],
+.modal-content input[type="url"],
+.modal-content input[type="tel"],
+.modal-content textarea {
+  background: var(--card-bg-light) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-light) !important;
+}
+
+[data-theme="dark"] .modal input[type="text"],
+[data-theme="dark"] .modal input[type="email"],
+[data-theme="dark"] .modal input[type="password"],
+[data-theme="dark"] .modal input[type="number"],
+[data-theme="dark"] .modal input[type="date"],
+[data-theme="dark"] .modal input[type="time"],
+[data-theme="dark"] .modal input[type="url"],
+[data-theme="dark"] .modal input[type="tel"],
+[data-theme="dark"] .modal textarea,
+[data-theme="dark"] .modal-content input[type="text"],
+[data-theme="dark"] .modal-content input[type="email"],
+[data-theme="dark"] .modal-content input[type="password"],
+[data-theme="dark"] .modal-content input[type="number"],
+[data-theme="dark"] .modal-content input[type="date"],
+[data-theme="dark"] .modal-content input[type="time"],
+[data-theme="dark"] .modal-content input[type="url"],
+[data-theme="dark"] .modal-content input[type="tel"],
+[data-theme="dark"] .modal-content textarea {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+
+/* ================================================================
+   7. CARD/FORM INPUT OVERRIDES
+   ================================================================ */
+
+.card input[type="text"],
+.card input[type="email"],
+.card input[type="password"],
+.card input[type="number"],
+.card input[type="date"],
+.card input[type="time"],
+.card input[type="url"],
+.card input[type="tel"],
+.card textarea,
+.card-body input[type="text"],
+.card-body input[type="email"],
+.card-body input[type="password"],
+.card-body input[type="number"],
+.card-body input[type="date"],
+.card-body input[type="time"],
+.card-body input[type="url"],
+.card-body input[type="tel"],
+.card-body textarea,
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="url"],
+.form-group input[type="tel"],
+.form-group textarea {
+  background: var(--card-bg-light) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .card input[type="text"],
+[data-theme="dark"] .card input[type="email"],
+[data-theme="dark"] .card input[type="password"],
+[data-theme="dark"] .card input[type="number"],
+[data-theme="dark"] .card input[type="date"],
+[data-theme="dark"] .card input[type="time"],
+[data-theme="dark"] .card input[type="url"],
+[data-theme="dark"] .card input[type="tel"],
+[data-theme="dark"] .card textarea,
+[data-theme="dark"] .card-body input[type="text"],
+[data-theme="dark"] .card-body input[type="email"],
+[data-theme="dark"] .card-body input[type="password"],
+[data-theme="dark"] .card-body input[type="number"],
+[data-theme="dark"] .card-body input[type="date"],
+[data-theme="dark"] .card-body input[type="time"],
+[data-theme="dark"] .card-body input[type="url"],
+[data-theme="dark"] .card-body input[type="tel"],
+[data-theme="dark"] .card-body textarea,
+[data-theme="dark"] .form-group input[type="text"],
+[data-theme="dark"] .form-group input[type="email"],
+[data-theme="dark"] .form-group input[type="password"],
+[data-theme="dark"] .form-group input[type="number"],
+[data-theme="dark"] .form-group input[type="date"],
+[data-theme="dark"] .form-group input[type="time"],
+[data-theme="dark"] .form-group input[type="url"],
+[data-theme="dark"] .form-group input[type="tel"],
+[data-theme="dark"] .form-group textarea {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+
+/* ================================================================
+   8. DISABLED STATE
+   ================================================================ */
+
+input:disabled,
+textarea:disabled,
+.form-control:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  background: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] input:disabled,
+[data-theme="dark"] textarea:disabled,
+[data-theme="dark"] .form-control:disabled {
+  background: #0f172a !important;
+  color: #64748b !important;
+  border-color: #1e293b !important;
+}
+
+/* ================================================================
+   9. READONLY STATE
+   ================================================================ */
+
+input:read-only,
+textarea:read-only,
+.form-control:read-only {
+  background: var(--bg-secondary) !important;
+  cursor: default !important;
+}
+
+[data-theme="dark"] input:read-only,
+[data-theme="dark"] textarea:read-only,
+[data-theme="dark"] .form-control:read-only {
+  background: #0f172a !important;
+  color: #cbd5e1 !important;
+}
+
+/* ================================================================
+   10. VALIDATION STATES
+   ================================================================ */
+
+/* Invalid/Error state */
+input.is-invalid,
+textarea.is-invalid,
+.form-control.is-invalid {
+  border-color: #ef4444 !important;
+}
+
+[data-theme="dark"] input.is-invalid,
+[data-theme="dark"] textarea.is-invalid,
+[data-theme="dark"] .form-control.is-invalid {
+  border-color: #f87171 !important;
+}
+
+input.is-invalid:focus,
+textarea.is-invalid:focus,
+.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Valid/Success state */
+input.is-valid,
+textarea.is-valid,
+.form-control.is-valid {
+  border-color: #10b981 !important;
+}
+
+[data-theme="dark"] input.is-valid,
+[data-theme="dark"] textarea.is-valid,
+[data-theme="dark"] .form-control.is-valid {
+  border-color: #34d399 !important;
+}
+
+/* ================================================================
+   11. AUTOCOMPLETE STYLING (Prevent browser defaults)
+   ================================================================ */
+
+/* Chrome, Safari, Edge autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--card-bg-light) inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+[data-theme="dark"] input:-webkit-autofill,
+[data-theme="dark"] input:-webkit-autofill:hover,
+[data-theme="dark"] input:-webkit-autofill:focus,
+[data-theme="dark"] textarea:-webkit-autofill,
+[data-theme="dark"] textarea:-webkit-autofill:hover,
+[data-theme="dark"] textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f1f5f9 !important;
+  -webkit-box-shadow: 0 0 0 1000px #1e293b inset !important;
+}
+
+/* ================================================================
+   12. DATE/TIME INPUT SPECIFIC (Browser Controls)
+   ================================================================ */
+
+/* Calendar icon in date inputs */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.5);
+}
+
+[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator,
+[data-theme="dark"] input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}
+
+/* ================================================================
+   13. SEARCH INPUT SPECIFIC
+   ================================================================ */
+
+/* Clear button in search inputs */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 16px;
+  width: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23475569'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+  cursor: pointer;
+}
+
+[data-theme="dark"] input[type="search"]::-webkit-search-cancel-button {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23cbd5e1'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+}
+
+/* ================================================================
+   14. MOBILE RESPONSIVE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="search"],
+  textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 0.75rem !important;
+  }
+}
+
+/* ================================================================
+   15. SPECIFIC BROWSER FIXES
+   ================================================================ */
+
+/* Firefox specific */
+@-moz-document url-prefix() {
+  [data-theme="dark"] input,
+  [data-theme="dark"] textarea {
+    color-scheme: dark;
+  }
+}
+
+/* Safari/WebKit specific */
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) {
+    [data-theme="dark"] input,
+    [data-theme="dark"] textarea {
+      color-scheme: dark;
+    }
+  }
+}
+
+/* ================================================================
+   16. HIGH CONTRAST MODE SUPPORT
+   ================================================================ */
+
+@media (prefers-contrast: high) {
+  input,
+  textarea,
+  .form-control {
+    border-width: 2px !important;
+  }
+}
+
+/* ================================================================
+   17. ANIMATION REMOVAL FOR REDUCED MOTION
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  input,
+  textarea,
+  .form-control {
+    transition: none !important;
+  }
+}
+
+/* ================================================================
+   18. LABEL STYLING FOR BETTER VISIBILITY
+   ================================================================ */
+
+label,
+.form-group label {
+  color: var(--text-primary) !important;
+  font-weight: 500 !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+}
+
+[data-theme="dark"] label,
+[data-theme="dark"] .form-group label {
+  color: #f1f5f9 !important;
+}
+
+/* ================================================================
+   END OF INPUT/TEXTAREA FIX
+   ================================================================ */

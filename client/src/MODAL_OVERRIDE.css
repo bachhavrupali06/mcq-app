@@ -1,0 +1,123 @@
+/* ================================================================
+   MODAL FIX - RESOLVE CONFLICTING .modal DEFINITIONS
+   Fix conflicts between .modal as overlay (line 2276) and content (line 1220)
+   ================================================================ */
+
+/* CRITICAL FIX: The .modal class in App.css has conflicting definitions:
+   - Line 2276: .modal as OVERLAY (position: fixed, flexbox)
+   - Line 1220: .modal as CONTENT (max-width: 600px, relative)
+   
+   This causes modals to appear in the wrong position.
+   Solution: Override to ensure proper centering */
+
+/* Force .modal to ALWAYS act as overlay/backdrop */
+.modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  animation: fadeIn 0.3s ease-out !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Force .modal-content to ALWAYS act as the centered content box */
+.modal-content {
+  position: relative !important;
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  border-radius: var(--border-radius-lg) !important;
+  padding: 0 !important;
+  max-width: 600px !important;
+  width: 100% !important;
+  max-height: 90vh !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-xl) !important;
+  border: 1px solid var(--border-color) !important;
+  animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  margin: auto !important;
+  top: auto !important;
+  left: auto !important;
+  bottom: auto !important;
+  right: auto !important;
+  z-index: 10000 !important;
+  box-sizing: border-box !important;
+}
+
+/* Ensure nested elements don't break layout */
+.modal .modal-content {
+  transform: none !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .modal {
+    padding: 0.5rem !important;
+  }
+  
+  .modal-content {
+    max-width: calc(100vw - 1rem) !important;
+    max-height: calc(100vh - 1rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 0 !important;
+  }
+  
+  .modal-content {
+    max-width: 100vw !important;
+    border-radius: 0 !important;
+    max-height: 100vh !important;
+  }
+}
+
+/* Override any transform or positioning that might break centering */
+.modal,
+.modal-content {
+  box-sizing: border-box !important;
+}
+
+/* Ensure modal appears above everything */
+.modal {
+  isolation: isolate;
+}
+
+/* Add scroll handling for tall modals */
+.modal-content {
+  overflow-y: auto;
+}
+
+/* Fix for modal portal z-index conflicts */
+.modal-portal-overlay {
+  z-index: 9999 !important;
+}
+
+.modal-portal-content {
+  z-index: 10000 !important;
+}
+
+/* Debug mode - uncomment to visualize modal layers */
+/*
+.modal {
+  outline: 5px solid red !important;
+  outline-offset: -5px;
+}
+
+.modal-content {
+  outline: 5px solid blue !important;
+  outline-offset: -5px;
+}
+*/

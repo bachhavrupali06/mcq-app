@@ -1,0 +1,502 @@
+/* ================================================================
+   MODAL PORTAL SYSTEM - FIXED POSITIONING
+   Ensures all modals render above all content with React Portals
+   ================================================================ */
+
+/* Modal Overlay - Full viewport coverage */
+.modal-portal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9999; /* Very high z-index to ensure it's above everything */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+  animation: modalOverlayFadeIn 0.2s ease-out;
+}
+
+@keyframes modalOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content Container */
+.modal-portal-content {
+  position: relative;
+  background: var(--card-bg-light);
+  border-radius: var(--border-radius-lg, 16px);
+  width: 100%;
+  max-height: calc(100vh - 2rem);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-light, #e2e8f0);
+  animation: modalContentSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10000; /* Above overlay */
+}
+
+@keyframes modalContentSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .modal-portal-content {
+  background: var(--card-bg-light, #1e293b);
+  border-color: var(--border-light, #334155);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Sizes */
+.modal-portal-sm {
+  max-width: 400px;
+}
+
+.modal-portal-md {
+  max-width: 600px;
+}
+
+.modal-portal-lg {
+  max-width: 800px;
+}
+
+.modal-portal-xl {
+  max-width: 1200px;
+}
+
+/* Modal Header */
+.modal-portal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-light, #e2e8f0);
+  background: var(--bg-secondary, #f1f5f9);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .modal-portal-header {
+  background: var(--bg-secondary, #1e293b);
+  border-bottom-color: var(--border-light, #334155);
+}
+
+.modal-portal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary, #0f172a);
+  line-height: 1.4;
+}
+
+[data-theme="dark"] .modal-portal-title {
+  color: var(--text-primary, #f1f5f9);
+}
+
+/* Close Button */
+.modal-portal-close {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--text-secondary, #475569);
+  cursor: pointer;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.modal-portal-close:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  transform: rotate(90deg);
+}
+
+.modal-portal-close:focus {
+  outline: 2px solid var(--btn-primary-bg, #667eea);
+  outline-offset: 2px;
+}
+
+/* Modal Body */
+.modal-portal-body {
+  padding: 2rem;
+  overflow-y: auto;
+  flex: 1;
+  color: var(--text-primary, #0f172a);
+}
+
+[data-theme="dark"] .modal-portal-body {
+  color: var(--text-primary, #f1f5f9);
+}
+
+/* Custom Scrollbar for Modal Body */
+.modal-portal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-portal-body::-webkit-scrollbar-track {
+  background: var(--bg-secondary, #f1f5f9);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .modal-portal-body::-webkit-scrollbar-track {
+  background: var(--bg-secondary, #1e293b);
+}
+
+.modal-portal-body::-webkit-scrollbar-thumb {
+  background: var(--border-dark, #94a3b8);
+  border-radius: 4px;
+}
+
+.modal-portal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--btn-primary-bg, #667eea);
+}
+
+/* Modal Footer */
+.modal-portal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border-light, #e2e8f0);
+  background: var(--bg-secondary, #f1f5f9);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .modal-portal-footer {
+  background: var(--bg-secondary, #1e293b);
+  border-top-color: var(--border-light, #334155);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .modal-portal-overlay {
+    padding: 0.5rem;
+  }
+
+  .modal-portal-content {
+    max-height: calc(100vh - 1rem);
+  }
+
+  .modal-portal-header {
+    padding: 1rem 1.25rem;
+  }
+
+  .modal-portal-title {
+    font-size: 1.125rem;
+  }
+
+  .modal-portal-close {
+    width: 32px;
+    height: 32px;
+    font-size: 1.75rem;
+  }
+
+  .modal-portal-body {
+    padding: 1.25rem;
+  }
+
+  .modal-portal-footer {
+    padding: 1rem 1.25rem;
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+  }
+
+  .modal-portal-footer .btn {
+    width: 100%;
+  }
+
+  /* Make all modal sizes full width on mobile */
+  .modal-portal-sm,
+  .modal-portal-md,
+  .modal-portal-lg,
+  .modal-portal-xl {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-portal-overlay {
+    padding: 0;
+  }
+
+  .modal-portal-content {
+    border-radius: 0;
+    max-height: 100vh;
+  }
+
+  .modal-portal-header {
+    padding: 0.875rem 1rem;
+  }
+
+  .modal-portal-body {
+    padding: 1rem;
+  }
+
+  .modal-portal-footer {
+    padding: 0.875rem 1rem;
+  }
+}
+
+/* Prevent scrolling on body when modal is open */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Ensure modal appears above sidebar, navbar, and all content */
+.modal-portal-overlay {
+  z-index: 9999 !important;
+}
+
+.modal-portal-content {
+  z-index: 10000 !important;
+}
+
+/* Override any parent container restrictions */
+.dashboard-with-sidebar,
+.dashboard-main,
+.card,
+.card-body {
+  overflow: visible !important; /* This is for the modal rendering, not the containers */
+}
+
+/* Accessibility: Focus trap styles */
+.modal-portal-content:focus {
+  outline: none;
+}
+
+/* Loading state for modal */
+.modal-portal-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.modal-portal-loading .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-light, #e2e8f0);
+  border-top-color: var(--btn-primary-bg, #667eea);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form styling inside modal */
+.modal-portal-body .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.modal-portal-body .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.modal-portal-body label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--text-primary, #0f172a);
+}
+
+[data-theme="dark"] .modal-portal-body label {
+  color: var(--text-primary, #f1f5f9);
+}
+
+.modal-portal-body input,
+.modal-portal-body textarea,
+.modal-portal-body select {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1.5px solid var(--border-light, #e2e8f0);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: all 0.15s ease;
+  background: var(--card-bg-light, #ffffff);
+  color: var(--text-primary, #0f172a);
+}
+
+[data-theme="dark"] .modal-portal-body input,
+[data-theme="dark"] .modal-portal-body textarea,
+[data-theme="dark"] .modal-portal-body select {
+  background: var(--card-bg-light, #1e293b);
+  color: var(--text-primary, #f1f5f9);
+  border-color: var(--border-light, #334155);
+}
+
+.modal-portal-body input:focus,
+.modal-portal-body textarea:focus,
+.modal-portal-body select:focus {
+  outline: none;
+  border-color: var(--btn-primary-bg, #667eea);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Checkbox and Radio in Modal */
+.modal-portal-body input[type="checkbox"],
+.modal-portal-body input[type="radio"] {
+  width: auto;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+/* Error state for form fields */
+.modal-portal-body .is-invalid {
+  border-color: #ef4444;
+}
+
+.modal-portal-body .invalid-feedback {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #ef4444;
+}
+
+/* Success state for form fields */
+.modal-portal-body .is-valid {
+  border-color: #10b981;
+}
+
+/* Tabs inside modal */
+.modal-portal-body .tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 2px solid var(--border-light, #e2e8f0);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.modal-portal-body .tab-btn {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary, #475569);
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  margin-bottom: -2px;
+}
+
+.modal-portal-body .tab-btn:hover {
+  color: var(--text-primary, #0f172a);
+  background: var(--bg-secondary, #f1f5f9);
+}
+
+[data-theme="dark"] .modal-portal-body .tab-btn:hover {
+  color: var(--text-primary, #f1f5f9);
+  background: var(--bg-secondary, #1e293b);
+}
+
+.modal-portal-body .tab-btn.active {
+  color: var(--btn-primary-bg, #667eea);
+  border-bottom-color: var(--btn-primary-bg, #667eea);
+  font-weight: 600;
+}
+
+/* Alert messages in modal */
+.modal-portal-body .alert {
+  padding: 0.875rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  border-left: 3px solid;
+}
+
+.modal-portal-body .alert-info {
+  background: rgba(59, 130, 246, 0.1);
+  border-left-color: #3b82f6;
+  color: #1e40af;
+}
+
+[data-theme="dark"] .modal-portal-body .alert-info {
+  color: #93c5fd;
+}
+
+.modal-portal-body .alert-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-left-color: #10b981;
+  color: #065f46;
+}
+
+[data-theme="dark"] .modal-portal-body .alert-success {
+  color: #6ee7b7;
+}
+
+.modal-portal-body .alert-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-left-color: #f59e0b;
+  color: #92400e;
+}
+
+[data-theme="dark"] .modal-portal-body .alert-warning {
+  color: #fcd34d;
+}
+
+.modal-portal-body .alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  border-left-color: #ef4444;
+  color: #991b1b;
+}
+
+[data-theme="dark"] .modal-portal-body .alert-error {
+  color: #fca5a5;
+}
+
+/* Prevent animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .modal-portal-overlay,
+  .modal-portal-content {
+    animation: none;
+  }
+
+  .modal-portal-close {
+    transition: none;
+  }
+}
+
+/* Print: Hide modals */
+@media print {
+  .modal-portal-overlay {
+    display: none !important;
+  }
+}

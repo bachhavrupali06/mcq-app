@@ -1,0 +1,1102 @@
+/* ================================================================
+   EXAM PAGE MOBILE RESPONSIVE FIX
+   Fixes: Question visibility, Navigator positioning, and layout issues
+   ================================================================ */
+
+/* ================================================================
+   1. EXAM PAGE LAYOUT - DESKTOP (DEFAULT)
+   ================================================================ */
+
+.exam-page-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2rem;
+}
+
+/* ================================================================
+   2. NAVBAR RESPONSIVE FIXES
+   ================================================================ */
+
+/* Fix back button text visibility - Override transparent text from navbar-brand */
+.navbar-brand button,
+.navbar-brand button *,
+.navbar-brand button.btn,
+.navbar-brand button.btn span,
+.navbar-brand button span {
+  -webkit-text-fill-color: initial !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  background: transparent !important;
+  color: #1f2937 !important;
+}
+
+.navbar-brand button.btn {
+  background: #f3f4f6 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.navbar-brand button.btn:hover {
+  background: #e5e7eb !important;
+}
+
+/* Make sure SVG icons are visible */
+.navbar-brand button svg {
+  color: #1f2937 !important;
+  stroke: #1f2937 !important;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem !important;
+  }
+
+  .navbar-brand {
+    width: 100%;
+    font-size: 0.9rem !important;
+  }
+
+  .navbar-brand button {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.85rem !important;
+    min-height: 36px !important;
+  }
+
+  .navbar-brand > div {
+    font-size: 0.9rem !important;
+  }
+
+  .navbar-user {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .navbar-user > div {
+    flex-direction: column;
+    gap: 0.5rem !important;
+    align-items: flex-start !important;
+  }
+}
+
+/* ================================================================
+   3. TIMER - MOBILE ADJUSTMENTS
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .navbar-user > div > div:first-child {
+    /* Timer container */
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .navbar-user > div > div:first-child span {
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-user > div {
+    width: 100%;
+  }
+
+  .navbar-user > div > div:first-child {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ================================================================
+   4. PROGRESS CONTAINER - MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .progress-container {
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .progress-container > div:first-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+
+  .progress-container > div:first-child > div:first-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100%;
+  }
+
+  .progress-container > div:first-child > div:last-child {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-container {
+    padding: 0.75rem !important;
+  }
+
+  .progress-container > div:first-child > div {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* ================================================================
+   5. EXAM PAGE GRID - MOBILE LAYOUT (CRITICAL FIX)
+   ================================================================ */
+
+@media (max-width: 1024px) {
+  /* Change to stacked layout on tablets */
+  .dashboard .container > div[style*="gridTemplateColumns"],
+  [data-theme] .container > div[style*="gridTemplateColumns"],
+  .container > div[style*="grid-template-columns"] {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    gap: 1rem !important;
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Force stacked layout on mobile - SUPER IMPORTANT */
+  .dashboard .container > div[style*="gridTemplateColumns"],
+  .dashboard .container > div[style*="grid-template-columns"],
+  [data-theme] .container > div[style*="gridTemplateColumns"],
+  [data-theme] .container > div[style*="grid-template-columns"],
+  .container > div[style*="gridTemplateColumns"],
+  .container > div[style*="grid-template-columns"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Make navigator come first on mobile */
+  .dashboard .container > div[style*="gridTemplateColumns"] > div:last-child,
+  .dashboard .container > div[style*="grid-template-columns"] > div:last-child,
+  [data-theme] .container > div[style*="gridTemplateColumns"] > div:last-child,
+  [data-theme] .container > div[style*="grid-template-columns"] > div:last-child {
+    order: -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 1rem;
+  }
+
+  /* Question card should be full width and come after */
+  .dashboard .container > div[style*="gridTemplateColumns"] > div:first-child,
+  .dashboard .container > div[style*="grid-template-columns"] > div:first-child,
+  [data-theme] .container > div[style*="gridTemplateColumns"] > div:first-child,
+  [data-theme] .container > div[style*="grid-template-columns"] > div:first-child {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* ================================================================
+   6. QUESTION CARD - MOBILE RESPONSIVE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .question-card {
+    padding: 1.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .question-card .question-number {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1rem !important;
+  }
+
+  .question-text {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Subject indicator on mobile */
+  .question-card > div[style*="backgroundColor: #f8f9fa"] {
+    padding: 0.5rem 0.75rem !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .question-card {
+    padding: 1rem !important;
+    border-radius: var(--border-radius) !important;
+  }
+
+  .question-text {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ================================================================
+   7. ANSWER OPTIONS - MOBILE LAYOUT
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .options {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+
+  .option {
+    padding: 1rem !important;
+    min-height: auto !important;
+  }
+
+  .option span {
+    font-size: 0.9rem !important;
+  }
+
+  .option span > div {
+    /* Option letter circle */
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .option {
+    padding: 0.875rem !important;
+  }
+
+  .option span {
+    font-size: 0.85rem !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* ================================================================
+   8. NAVIGATION BUTTONS - MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .question-card > div:last-child {
+    /* Navigation container */
+    flex-direction: column !important;
+    gap: 1rem !important;
+    padding-top: 1rem !important;
+  }
+
+  .question-card > div:last-child > button,
+  .question-card > div:last-child > div:last-child {
+    width: 100%;
+  }
+
+  .question-card > div:last-child > div:nth-child(2) {
+    /* Motivational message */
+    display: none; /* Hide on mobile to save space */
+  }
+
+  .question-card > div:last-child > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .question-card > div:last-child button {
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .question-card > div:last-child button {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ================================================================
+   9. QUESTION NAVIGATOR - MOBILE POSITIONING
+   ================================================================ */
+
+@media (max-width: 1024px) {
+  /* Make navigator card full width on tablets */
+  .card.slide-in-right,
+  [data-theme] .card.slide-in-right,
+  .slide-in-right {
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Compact navigator on mobile - CRITICAL */
+  .card.slide-in-right,
+  [data-theme] .card.slide-in-right,
+  .slide-in-right {
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative !important;
+    margin-bottom: 1rem !important;
+    float: none !important;
+    clear: both !important;
+  }
+
+  .card.slide-in-right .card-body,
+  [data-theme] .card.slide-in-right .card-body {
+    padding: 1rem !important;
+  }
+
+  /* Subject headers in navigator */
+  [data-theme] .card.slide-in-right .card-body > div > div > div[style*="linear-gradient"] {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Question grid in navigator */
+  [data-theme] .card.slide-in-right .card-body > div > div > div[style*="gridTemplateColumns"] {
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr)) !important;
+    gap: 0.4rem !important;
+    padding: 0.75rem !important;
+  }
+
+  /* Question buttons in navigator */
+  [data-theme] .card.slide-in-right .card-body button {
+    min-width: 40px !important;
+    height: 40px !important;
+    padding: 0.4rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Stats section */
+  [data-theme] .card.slide-in-right .card-body > div[style*="background: linear-gradient"] {
+    padding: 1rem !important;
+  }
+
+  [data-theme] .card.slide-in-right .card-body > div[style*="background: linear-gradient"] h5 {
+    font-size: 0.9rem !important;
+  }
+
+  [data-theme] .card.slide-in-right .card-body > div[style*="background: linear-gradient"] span {
+    font-size: 0.85rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-theme] .card.slide-in-right .card-body {
+    padding: 0.75rem !important;
+  }
+
+  /* Make question grid more compact */
+  [data-theme] .card.slide-in-right .card-body > div > div > div[style*="gridTemplateColumns"] {
+    grid-template-columns: repeat(auto-fill, minmax(36px, 1fr)) !important;
+    gap: 0.35rem !important;
+    padding: 0.5rem !important;
+  }
+
+  [data-theme] .card.slide-in-right .card-body button {
+    min-width: 36px !important;
+    height: 36px !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* ================================================================
+   10. NAVIGATOR - COLLAPSIBLE ON MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* Add toggle button for navigator on mobile */
+  .mobile-navigator-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+  }
+
+  .mobile-navigator-content {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  /* Sticky navigator on mobile when scrolling */
+  [data-theme] .card.slide-in-right {
+    position: sticky;
+    top: 1rem;
+    z-index: 100;
+  }
+}
+
+/* ================================================================
+   11. CONFIRMATION MODAL - MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .modal {
+    max-width: calc(100% - 2rem) !important;
+    margin: 1rem !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+
+  .modal-body {
+    padding: 1.25rem !important;
+  }
+
+  .modal-body > div[style*="gridTemplateColumns"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .modal-body > div[style*="gridTemplateColumns"] > div {
+    padding: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    max-width: calc(100% - 1rem) !important;
+    margin: 0.5rem !important;
+  }
+
+  .modal-header {
+    padding: 1rem !important;
+  }
+
+  .modal-body {
+    padding: 1rem !important;
+  }
+
+  .modal-body p {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ================================================================
+   12. CONTAINER AND SPACING - MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .dashboard .container {
+    padding: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard .container {
+    padding: 0.75rem !important;
+  }
+}
+
+/* ================================================================
+   13. HIDE/SHOW UTILITIES FOR MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .show-on-mobile {
+    display: block !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .hide-on-desktop {
+    display: none !important;
+  }
+
+  .show-on-desktop {
+    display: block !important;
+  }
+}
+
+/* ================================================================
+   14. QUESTION NUMBER BADGE - MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .question-card > div:first-child {
+    gap: 0.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .question-card > div:first-child > div:last-child {
+    flex: 1 !important;
+  }
+
+  .question-card > div:first-child > div:last-child > div:first-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* ================================================================
+   15. ANSWERED BADGE - MOBILE
+   ================================================================ */
+
+@media (max-width: 480px) {
+  .question-card > div:first-child > div:last-child > div:first-child > div[style*="background: var(--success-gradient)"] {
+    padding: 0.2rem 0.6rem !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* ================================================================
+   16. TOUCHSCREEN IMPROVEMENTS
+   ================================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Touchscreen devices */
+  .option {
+    min-height: 48px !important; /* Minimum touch target */
+  }
+
+  .question-card button {
+    min-height: 44px !important; /* Minimum touch target */
+  }
+
+  [data-theme] .card.slide-in-right .card-body button {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+}
+
+/* ================================================================
+   17. LANDSCAPE MODE ON MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .navbar {
+    padding: 0.5rem 1rem !important;
+  }
+
+  .progress-container {
+    padding: 0.75rem !important;
+  }
+
+  .question-card {
+    padding: 1rem !important;
+  }
+
+  /* Make navigator more compact in landscape */
+  [data-theme] .card.slide-in-right {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+}
+
+/* ================================================================
+   18. SCROLLBAR STYLING FOR NAVIGATOR ON MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  [data-theme] .card.slide-in-right .card-body::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  [data-theme] .card.slide-in-right .card-body::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 3px;
+  }
+
+  [data-theme] .card.slide-in-right .card-body::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+  }
+
+  [data-theme] .card.slide-in-right .card-body::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+  }
+}
+
+/* ================================================================
+   19. PREVENT TEXT SELECTION ON TOUCH
+   ================================================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  .option span {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* ================================================================
+   20. SAFE AREA FOR NOTCHED DEVICES
+   ================================================================ */
+
+@supports (padding: max(0px)) {
+  @media (max-width: 768px) {
+    .dashboard .container {
+      padding-left: max(0.75rem, env(safe-area-inset-left)) !important;
+      padding-right: max(0.75rem, env(safe-area-inset-right)) !important;
+      padding-bottom: max(0.75rem, env(safe-area-inset-bottom)) !important;
+    }
+
+    .navbar {
+      padding-top: max(0.75rem, env(safe-area-inset-top)) !important;
+    }
+  }
+}
+
+/* ================================================================
+   21. ULTRA-AGGRESSIVE MOBILE FIXES (BASED ON SCREENSHOT)
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* FORCE remove grid layout on mobile */
+  .dashboard .container > div {
+    display: block !important;
+  }
+
+  .dashboard .container > div > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    float: none !important;
+    position: relative !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Ensure question card is full width and not overlapped */
+  .question-card,
+  .card.question-card,
+  div.question-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    position: relative !important;
+    clear: both !important;
+  }
+
+  /* Ensure navigator is above and not overlapping */
+  .card-header h4,
+  .card-title {
+    font-size: 1rem !important;
+  }
+
+  /* Fix the specific grid issue seen in screenshot */
+  body .dashboard .container > div[style],
+  body .container > div[style] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Target the exact grid structure */
+  body div[style*="display: grid"],
+  body div[style*="display:grid"] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  body div[style*="grid-template-columns"],
+  body div[style*="gridTemplateColumns"] {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ================================================================
+   22. EXAM PAGE SPECIFIC MOBILE OVERRIDES
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* Question text should be clearly visible */
+  .question-text,
+  div.question-text {
+    width: 100% !important;
+    padding: 1rem !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Options must stack */
+  .options,
+  div.options {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+
+  /* Each option full width */
+  .option,
+  div.option {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Navigator should be compact at top */
+  .card-header {
+    padding: 0.75rem 1rem !important;
+  }
+
+  .card-body {
+    padding: 1rem !important;
+  }
+}
+
+/* ================================================================
+   23. PREVENT ABSOLUTE POSITIONING ON MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* Prevent elements from being positioned absolutely */
+  .dashboard .container > * {
+    position: relative !important;
+  }
+
+  /* Ensure no fixed positioning that blocks content */
+  .dashboard * {
+    position: static !important;
+  }
+
+  .dashboard .navbar,
+  .dashboard .progress-container,
+  .dashboard .question-card,
+  .dashboard .card {
+    position: relative !important;
+  }
+}
+
+/* ================================================================
+   24. MOBILE-FIRST CONTAINER FIX
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* Force single column layout */
+  .container,
+  .dashboard .container {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0.75rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .container > *,
+  .dashboard .container > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Remove any transforms that might break layout */
+  .container > div,
+  .dashboard .container > div {
+    transform: none !important;
+  }
+}
+
+/* ================================================================
+   25. MOBILE VIEWPORT FIX
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* Prevent horizontal overflow */
+  body,
+  html {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .dashboard {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  .container {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+
+  /* Ensure everything fits in viewport */
+  * {
+    max-width: 100% !important;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* ================================================================
+   26. PROGRESS BAR MOBILE FIX
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .progress-container,
+  div.progress-container {
+    width: 100% !important;
+    margin: 0 0 1rem 0 !important;
+    padding: 1rem !important;
+  }
+
+  .progress-bar,
+  div.progress-bar {
+    width: 100% !important;
+  }
+}
+
+/* ================================================================
+   27. CARD SPACING ON MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .card,
+  div.card {
+    margin-bottom: 1rem !important;
+    width: 100% !important;
+  }
+
+  .card + .card {
+    margin-top: 0 !important;
+  }
+}
+
+/* ================================================================
+   28. COLLAPSIBLE QUESTION NAVIGATOR - MOBILE (NEW FIX)
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* Show toggle icon only on mobile */
+  .mobile-toggle-icon {
+    display: flex !important;
+    align-items: center;
+    color: var(--primary-color);
+  }
+
+  /* Navigator header should be clickable */
+  .question-navigator .card-header {
+    cursor: pointer !important;
+    user-select: none;
+    -webkit-user-select: none;
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: var(--border-radius) !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .question-navigator .card-header h4 {
+    color: white !important;
+  }
+
+  .question-navigator .card-header svg {
+    color: white !important;
+  }
+
+  /* Collapsed state - COMPACT */
+  .question-navigator.navigator-collapsed {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .question-navigator.navigator-collapsed .card-body {
+    max-height: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    transition: all 0.3s ease !important;
+  }
+
+  /* Expanded state - LIMITED HEIGHT */
+  .question-navigator.navigator-expanded .card-body {
+    max-height: 350px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 1rem !important;
+    opacity: 1 !important;
+    transition: all 0.3s ease !important;
+  }
+
+  /* Make navigator sections more compact */
+  .question-navigator .card-body > div {
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Subject headers - more compact */
+  .question-navigator .card-body > div > div > div[style*="linear-gradient"] {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Question grid - smaller buttons */
+  .question-navigator .card-body > div > div > div[style*="gridTemplateColumns"] {
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 0.35rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .question-navigator .card-body button {
+    min-width: 34px !important;
+    height: 34px !important;
+    padding: 0.3rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Progress overview - compact */
+  .question-navigator .card-body > div[style*="background: linear-gradient"] {
+    padding: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .question-navigator .card-body > div[style*="background: linear-gradient"] h5 {
+    font-size: 0.85rem !important;
+    margin: 0 0 0.5rem 0 !important;
+  }
+
+  .question-navigator .card-body > div[style*="background: linear-gradient"] > div {
+    gap: 0.5rem !important;
+  }
+
+  .question-navigator .card-body > div[style*="background: linear-gradient"] span {
+    font-size: 0.8rem !important;
+  }
+
+  /* Motivational messages - hide or compact on mobile */
+  .question-navigator .card-body > div:last-child {
+    padding: 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Smooth scrollbar for navigator */
+  .question-navigator .card-body::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .question-navigator .card-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+
+  .question-navigator .card-body::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+  }
+
+  .question-navigator .card-body::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small mobile - even more compact */
+  .question-navigator.navigator-expanded .card-body {
+    max-height: 280px !important;
+  }
+
+  .question-navigator .card-body > div > div > div[style*="gridTemplateColumns"] {
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 0.3rem !important;
+    padding: 0.4rem !important;
+  }
+
+  .question-navigator .card-body button {
+    min-width: 32px !important;
+    height: 32px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .question-navigator .card-header {
+    padding: 0.6rem 0.85rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .question-navigator .card-header h4 {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ================================================================
+   29. ENSURE QUESTIONS APPEAR IMMEDIATELY AFTER NAVIGATOR
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* Force question card to be visible immediately */
+  .question-card {
+    order: 2 !important;
+    margin-top: 0 !important;
+    padding-top: 1rem !important;
+  }
+
+  /* Navigator at top, question below */
+  .question-navigator {
+    order: 1 !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 99 !important;
+    background: white !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  [data-theme="dark"] .question-navigator {
+    background: var(--card-bg) !important;
+  }
+
+  /* Remove excessive gaps */
+  .dashboard .container > div[style*="grid"] {
+    gap: 0.5rem !important;
+  }
+
+  /* Ensure question text is visible immediately below navigator */
+  .question-card > div:first-child {
+    margin-top: 0 !important;
+  }
+}
+
+/* ================================================================
+   30. HIDE NAVIGATOR STATS ON COLLAPSE (OPTIONAL)
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* When collapsed, hide everything except header */
+  .navigator-collapsed .card-body > * {
+    display: none !important;
+  }
+
+  /* When expanded, show everything */
+  .navigator-expanded .card-body > * {
+    display: block !important;
+  }
+
+  .navigator-expanded .card-body > div[style*="display: grid"],
+  .navigator-expanded .card-body > div[style*="display: flex"] {
+    display: grid !important;
+  }
+
+  .navigator-expanded .card-body > div > div[style*="display: grid"] {
+    display: grid !important;
+  }
+
+  .navigator-expanded .card-body > div > div[style*="display: flex"] {
+    display: flex !important;
+  }
+}
+
+/* ================================================================
+   END OF EXAM PAGE MOBILE FIX
+   ================================================================ */

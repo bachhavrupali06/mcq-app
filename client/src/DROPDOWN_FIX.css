@@ -1,0 +1,254 @@
+/* ================================================================
+   DROPDOWN / SELECT ELEMENT FIX FOR DARK MODE
+   Ensures all dropdowns are visible in both light and dark modes
+   ================================================================ */
+
+/* ================================================================
+   1. BASE SELECT STYLING (Override for consistency)
+   ================================================================ */
+
+select {
+  width: 100%;
+  padding: 0.625rem 2.5rem 0.625rem 0.875rem !important;
+  border: 1.5px solid var(--border-light) !important;
+  border-radius: var(--border-radius-sm) !important;
+  font-size: var(--text-sm) !important;
+  transition: all var(--transition-fast) !important;
+  background: var(--card-bg-light) !important;
+  color: var(--text-primary) !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  line-height: 1.5 !important;
+  
+  /* Custom dropdown arrow for light mode */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.875rem center !important;
+}
+
+/* ================================================================
+   2. DARK MODE SELECT STYLING
+   ================================================================ */
+
+[data-theme="dark"] select {
+  background: var(--card-bg-light) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-light) !important;
+  
+  /* Custom dropdown arrow for dark mode (lighter color) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23cbd5e1' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+}
+
+/* ================================================================
+   3. OPTION ELEMENT STYLING (CRITICAL FOR VISIBILITY)
+   ================================================================ */
+
+/* Light mode options */
+select option {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  padding: 0.5rem !important;
+  font-size: 0.875rem !important;
+}
+
+/* Dark mode options - THIS IS THE KEY FIX */
+[data-theme="dark"] select option {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  padding: 0.5rem !important;
+}
+
+/* Selected option in dropdown */
+[data-theme="dark"] select option:checked {
+  background: #334155 !important;
+  color: #ffffff !important;
+}
+
+/* Hover state for options (where supported) */
+[data-theme="dark"] select option:hover {
+  background: #475569 !important;
+  color: #ffffff !important;
+}
+
+/* ================================================================
+   4. FOCUS STATES
+   ================================================================ */
+
+select:focus {
+  outline: none !important;
+  border-color: var(--btn-primary-bg) !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+[data-theme="dark"] select:focus {
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2) !important;
+}
+
+/* ================================================================
+   5. MODAL SELECT OVERRIDES
+   ================================================================ */
+
+.modal select,
+.modal-content select,
+.modal-portal-content select,
+.modal-portal-body select {
+  background: var(--card-bg-light) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-light) !important;
+}
+
+[data-theme="dark"] .modal select,
+[data-theme="dark"] .modal-content select,
+[data-theme="dark"] .modal-portal-content select,
+[data-theme="dark"] .modal-portal-body select {
+  background: var(--card-bg-light) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-light) !important;
+}
+
+/* Modal options */
+.modal select option,
+.modal-content select option,
+.modal-portal-content select option,
+.modal-portal-body select option {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+[data-theme="dark"] .modal select option,
+[data-theme="dark"] .modal-content select option,
+[data-theme="dark"] .modal-portal-content select option,
+[data-theme="dark"] .modal-portal-body select option {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+/* ================================================================
+   6. CARD/FORM SELECT OVERRIDES
+   ================================================================ */
+
+.card select,
+.card-body select,
+.form-group select {
+  background: var(--card-bg-light) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .card select,
+[data-theme="dark"] .card-body select,
+[data-theme="dark"] .form-group select {
+  background: var(--card-bg-light) !important;
+  color: var(--text-primary) !important;
+}
+
+.card select option,
+.card-body select option,
+.form-group select option {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+[data-theme="dark"] .card select option,
+[data-theme="dark"] .card-body select option,
+[data-theme="dark"] .form-group select option {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+}
+
+/* ================================================================
+   7. DISABLED STATE
+   ================================================================ */
+
+select:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  background: var(--bg-secondary) !important;
+}
+
+[data-theme="dark"] select:disabled {
+  background: #0f172a !important;
+  color: #64748b !important;
+}
+
+/* ================================================================
+   8. PLACEHOLDER OPTION STYLING
+   ================================================================ */
+
+select option[value=""],
+select option:first-child {
+  color: var(--text-tertiary) !important;
+}
+
+[data-theme="dark"] select option[value=""],
+[data-theme="dark"] select option:first-child {
+  color: #94a3b8 !important;
+}
+
+/* ================================================================
+   9. MOBILE RESPONSIVE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 0.75rem 2.5rem 0.75rem 0.875rem !important;
+  }
+}
+
+/* ================================================================
+   10. SPECIFIC BROWSER FIXES
+   ================================================================ */
+
+/* Firefox specific */
+@-moz-document url-prefix() {
+  [data-theme="dark"] select {
+    color-scheme: dark;
+  }
+  
+  [data-theme="dark"] select option {
+    background: #1e293b !important;
+    color: #f1f5f9 !important;
+  }
+}
+
+/* Safari/WebKit specific */
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) {
+    [data-theme="dark"] select {
+      color-scheme: dark;
+    }
+    
+    [data-theme="dark"] select option {
+      background: #1e293b !important;
+      color: #f1f5f9 !important;
+    }
+  }
+}
+
+/* ================================================================
+   11. HIGH CONTRAST MODE SUPPORT
+   ================================================================ */
+
+@media (prefers-contrast: high) {
+  select {
+    border-width: 2px !important;
+  }
+  
+  select option {
+    font-weight: 500 !important;
+  }
+}
+
+/* ================================================================
+   12. ANIMATION REMOVAL FOR REDUCED MOTION
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  select {
+    transition: none !important;
+  }
+}
+
+/* ================================================================
+   END OF DROPDOWN FIX
+   ================================================================ */

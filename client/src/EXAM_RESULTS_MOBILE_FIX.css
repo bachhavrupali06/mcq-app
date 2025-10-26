@@ -1,0 +1,699 @@
+/* ================================================================
+   EXAM RESULTS PAGE - MOBILE RESPONSIVE FIX
+   Fixes: Content visibility, card layouts, and responsive design
+   ================================================================ */
+
+/* ================================================================
+   1. RESULTS PAGE - DESKTOP LAYOUT (DEFAULT)
+   ================================================================ */
+
+.results-header-section {
+  margin-bottom: 2rem;
+}
+
+.results-hero-card {
+  margin-bottom: 2rem;
+  padding: 2rem 1.5rem !important;
+}
+
+/* Make hero card more compact on desktop too */
+.results-hero-card > div:last-child {
+  padding: 0 !important;
+}
+
+.results-hero-card > div:last-child > div:first-child {
+  margin-bottom: 0.75rem !important;
+}
+
+.results-hero-card > div:last-child > div:nth-child(2) {
+  font-size: 3rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.results-hero-card > div:last-child > div:nth-child(3) {
+  font-size: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.results-hero-card > div:last-child > div:nth-child(4) {
+  font-size: 1.05rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.results-hero-card > div:last-child > div:last-child {
+  padding: 0.7rem 1.5rem !important;
+  font-size: 1rem !important;
+}
+
+/* ================================================================
+   2. MOBILE LAYOUT - CRITICAL FIXES
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* Ensure dashboard main has proper padding */
+  .dashboard-main {
+    padding: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Results header section */
+  .results-header-section {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .results-header-section h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .results-header-section p {
+    font-size: 1rem !important;
+  }
+
+  /* Back button */
+  .results-header-section .btn {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Hero Score Card - Make more compact */
+  .results-hero-card {
+    padding: 1.5rem 1.25rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .results-hero-card > div:last-child {
+    /* Inner content container */
+    padding: 0 !important;
+  }
+
+  .results-hero-card > div:last-child > div:first-child {
+    /* Trophy icon */
+    margin-bottom: 0.5rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:first-child svg {
+    /* Trophy icon size */
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .results-hero-card > div:last-child > div:nth-child(2) {
+    /* Score percentage */
+    font-size: 2.25rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:nth-child(3) {
+    /* Grade text */
+    font-size: 1.15rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:nth-child(4) {
+    /* Performance message */
+    font-size: 0.95rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:last-child {
+    /* Questions correct box */
+    padding: 0.55rem 1.15rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Analytics Cards Grid */
+  .grid.grid-4 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .analytics-card {
+    padding: 1rem !important;
+  }
+
+  .analytics-icon {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .analytics-icon svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .analytics-number {
+    font-size: 1.5rem !important;
+  }
+
+  .analytics-label {
+    font-size: 0.8rem !important;
+  }
+
+  /* Filter Tabs Card */
+  .card .card-body > div:first-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+
+  .tab-buttons {
+    width: 100% !important;
+    flex-direction: column !important;
+  }
+
+  .tab-buttons .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  /* Date completed info */
+  .card .card-body > div:first-child > div:last-child {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  /* Questions Review Card */
+  .card .card-header {
+    padding: 1rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  .card .card-header > div:first-child {
+    /* Icon circle */
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .card .card-header h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .card .card-header p {
+    font-size: 0.8rem !important;
+  }
+
+  /* Question Cards */
+  .question-card {
+    padding: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .question-card > div:first-child {
+    /* Main flex container */
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+
+  .question-card > div:first-child > div:first-child {
+    /* Question number circle */
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1rem !important;
+  }
+
+  .question-card > div:first-child > div:last-child {
+    /* Content container */
+    width: 100% !important;
+  }
+
+  .question-card > div:first-child > div:last-child > div:first-child {
+    /* Question text */
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Answer Options */
+  .question-card > div:first-child > div:last-child > div:nth-child(2) {
+    gap: 0.6rem !important;
+  }
+
+  .question-card > div:first-child > div:last-child > div:nth-child(2) > div {
+    /* Individual option */
+    padding: 0.85rem 1rem !important;
+  }
+
+  .question-card > div:first-child > div:last-child > div:nth-child(2) > div > div {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+
+  .question-card > div:first-child > div:last-child > div:nth-child(2) > div > div > span:first-child {
+    width: 100% !important;
+  }
+
+  .question-card > div:first-child > div:last-child > div:nth-child(2) > div > div > div {
+    /* Badges container */
+    margin-left: 0 !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* Option letter circle */
+  .question-card strong {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Explanation box */
+  .question-card > div:first-child > div:last-child > div:nth-child(3) {
+    padding: 1rem !important;
+    margin-top: 1rem !important;
+  }
+
+  .question-card > div:first-child > div:last-child > div:nth-child(3) > div:first-child {
+    font-size: 0.9rem !important;
+  }
+
+  .question-card > div:first-child > div:last-child > div:nth-child(3) p {
+    font-size: 0.9rem !important;
+  }
+
+  /* YouTube link button */
+  .question-card a {
+    padding: 0.65rem 1.25rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Warning message */
+  .question-card > div:first-child > div:last-child > div:last-child {
+    padding: 0.85rem 1rem !important;
+    font-size: 0.85rem !important;
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  /* Study Recommendations Card */
+  .card.slide-in-up:last-child .card-body {
+    padding: 1rem !important;
+  }
+
+  .card.slide-in-up:last-child .card-body h4 {
+    font-size: 1rem !important;
+  }
+
+  .card.slide-in-up:last-child .card-body ul {
+    font-size: 0.9rem !important;
+    padding-left: 1.25rem !important;
+  }
+
+  .card.slide-in-up:last-child .card-body h5 {
+    font-size: 0.95rem !important;
+  }
+
+  /* Video explanation links grid */
+  .card.slide-in-up:last-child .card-body a {
+    padding: 0.5rem 0.85rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
+/* ================================================================
+   3. SMALL MOBILE (480px and below)
+   ================================================================ */
+
+@media (max-width: 480px) {
+  .dashboard-main {
+    padding: 0.75rem !important;
+  }
+
+  /* Hero Score Card - Extra compact */
+  .results-hero-card {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:first-child svg {
+    /* Trophy icon size */
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .results-hero-card > div:last-child > div:nth-child(2) {
+    font-size: 1.85rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:nth-child(3) {
+    font-size: 1.05rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:nth-child(4) {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:last-child {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Analytics Cards - Stack vertically */
+  .grid.grid-4 {
+    grid-template-columns: 1fr !important;
+    gap: 0.6rem !important;
+  }
+
+  /* Question Cards - Extra compact */
+  .question-card {
+    padding: 0.85rem !important;
+  }
+
+  .question-card > div:first-child > div:first-child {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 0.95rem !important;
+  }
+
+  .question-card > div:first-child > div:last-child > div:first-child {
+    font-size: 0.95rem !important;
+  }
+
+  .question-card > div:first-child > div:last-child > div:nth-child(2) > div {
+    padding: 0.75rem 0.85rem !important;
+  }
+
+  /* Option text */
+  .question-card > div:first-child > div:last-child > div:nth-child(2) > div > div > span:first-child {
+    font-size: 0.9rem !important;
+  }
+
+  /* Badges */
+  .question-card > div:first-child > div:last-child > div:nth-child(2) > div > div > div > div {
+    padding: 0.2rem 0.6rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* ================================================================
+   4. TABLET (769px - 1024px)
+   ================================================================ */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Analytics Cards - 2 columns on tablet */
+  .grid.grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  /* Hero card - slightly smaller */
+  .results-hero-card {
+    padding: 2.5rem 1.75rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:nth-child(2) {
+    font-size: 3rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:nth-child(3) {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* ================================================================
+   5. PERFECT SCORE DISPLAY - MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  /* Perfect score message */
+  .card-body > div[style*="textAlign: center"] {
+    padding: 2.5rem 1.5rem !important;
+  }
+
+  .card-body > div[style*="textAlign: center"] > div:first-child {
+    /* Trophy icon circle */
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .card-body > div[style*="textAlign: center"] > div:first-child svg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .card-body > div[style*="textAlign: center"] h3 {
+    font-size: 1.5rem !important;
+  }
+
+  .card-body > div[style*="textAlign: center"] p {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ================================================================
+   6. CARD SPACING AND CONTAINERS
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem !important;
+  }
+
+  .card-body {
+    padding: 1rem !important;
+  }
+
+  .card-header {
+    padding: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .card-body {
+    padding: 0.85rem !important;
+  }
+
+  .card-header {
+    padding: 0.85rem !important;
+  }
+}
+
+/* ================================================================
+   7. STUDY RECOMMENDATIONS - COLOR FIX
+   ================================================================ */
+
+/* Force white text in Study Recommendations section for both light and dark modes */
+.study-recommendations-card .card-header {
+  color: white !important;
+}
+
+.study-recommendations-card .card-header .card-title {
+  color: white !important;
+}
+
+.study-recommendations-card .card-header svg {
+  color: white !important;
+  stroke: white !important;
+}
+
+.study-recommendations-card .card-body {
+  color: white !important;
+}
+
+.study-recommendations-card .card-body h4,
+.study-recommendations-card .card-body h5,
+.study-recommendations-card .card-body ul,
+.study-recommendations-card .card-body li {
+  color: white !important;
+}
+
+/* ================================================================
+   8. EMBEDDED VIDEO PLAYER - RESPONSIVE
+   ================================================================ */
+
+/* Ensure embedded videos are responsive on all screen sizes */
+.question-card iframe {
+  max-width: 100% !important;
+  border-radius: var(--border-radius-sm) !important;
+}
+
+/* Video container adjustments for mobile */
+@media (max-width: 768px) {
+  /* Video header ("Explanation Video" bar) */
+  .question-card > div:first-child > div:last-child > div:last-child > div:first-child {
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.9rem !important;
+  }
+  
+  /* Video header icon */
+  .question-card > div:first-child > div:last-child > div:last-child > div:first-child svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra compact video header for small screens */
+  .question-card > div:first-child > div:last-child > div:last-child > div:first-child {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.85rem !important;
+  }
+  
+  /* Smaller icon for small screens */
+  .question-card > div:first-child > div:last-child > div:last-child > div:first-child svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+/* ================================================================
+   9. PREVENT HORIZONTAL OVERFLOW
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .dashboard-with-sidebar,
+  .dashboard-main,
+  .card,
+  .question-card {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Ensure text wraps properly */
+  .question-card > div:first-child > div:last-child > div:first-child {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+
+  /* Ensure option text wraps */
+  .question-card > div:first-child > div:last-child > div:nth-child(2) > div > div > span {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+  }
+}
+
+/* ================================================================
+   10. BUTTON RESPONSIVENESS
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .btn {
+    min-height: 44px !important; /* Touch-friendly */
+  }
+
+  /* Back button */
+  .btn svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.65rem 0.85rem !important;
+    font-size: 0.85rem !important;
+  }
+
+  .btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+/* ================================================================
+   11. DECORATIVE CIRCLES ON HERO CARD - MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .results-hero-card > div:first-child,
+  .results-hero-card > div:nth-child(2) {
+    /* Decorative circles */
+    display: none !important; /* Hide on mobile to reduce clutter */
+  }
+}
+
+/* ================================================================
+   10. ANIMATION ADJUSTMENTS FOR MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .slide-in-up,
+  .scale-in {
+    animation-duration: 0.3s !important; /* Faster animations on mobile */
+  }
+}
+
+/* ================================================================
+   11. LANDSCAPE MODE ON MOBILE
+   ================================================================ */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .results-hero-card {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:nth-child(2) {
+    font-size: 2rem !important;
+  }
+
+  .results-hero-card > div:last-child > div:nth-child(3) {
+    font-size: 1.2rem !important;
+  }
+
+  .grid.grid-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ================================================================
+   12. DARK MODE COMPATIBILITY
+   ================================================================ */
+
+[data-theme="dark"] .results-hero-card {
+  /* Ensure hero card is visible in dark mode */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .question-card {
+  /* Ensure question cards are visible in dark mode */
+  background: var(--card-bg) !important;
+}
+
+/* ================================================================
+   13. FOCUS STATES FOR ACCESSIBILITY
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .btn:focus,
+  a:focus {
+    outline: 2px solid var(--primary-color) !important;
+    outline-offset: 2px !important;
+  }
+}
+
+/* ================================================================
+   14. PRINT STYLES (BONUS)
+   ================================================================ */
+
+@media print {
+  .dashboard-with-sidebar .sidebar,
+  .dashboard-with-sidebar nav,
+  .btn {
+    display: none !important;
+  }
+
+  .dashboard-main {
+    padding: 0 !important;
+  }
+
+  .question-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
+
+/* ================================================================
+   END OF EXAM RESULTS MOBILE FIX
+   ================================================================ */

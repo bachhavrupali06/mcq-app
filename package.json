@@ -1,0 +1,20 @@
+{
+  "name": "mcq-exam-app",
+  "version": "1.0.0",
+  "description": "MCQ Exam Application with Admin Panel and Student Interface",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": ["mcq", "exam", "education", "react", "nodejs"],
+  "author": "MCQ App Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
